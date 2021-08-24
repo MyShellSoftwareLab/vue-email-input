@@ -1,0 +1,32 @@
+{
+  "name": "@myshell/vue-email-input",
+  "version": "0.0.4",
+  "main": "src/index.js",
+  "browser": {
+    "./sfc": "src/vue-email-input.vue"
+  },
+  "description": "Vue email input.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MyShellSoftwareLab/vue-email-input.git"
+  },
+  "author": "GussRw",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MyShellSoftwareLab/vue-email-input/issues"
+  },
+  "homepage": "https://github.com/MyShellSoftwareLab/vue-email-input#readme",
+  "keywords": [
+    "plugin",
+    "laravel",
+    "vue",
+    "vuejs"
+  ],
+  "devDependencies": {
+    "vue": "^2.6.12",
+    "vue-select": "^3.5.0"
+  }
+}
