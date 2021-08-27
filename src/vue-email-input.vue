@@ -1,6 +1,6 @@
 <template>
     <v-select :taggable="true" :multiple="true" v-model="emails" :name="name"
-              :clear-search-on-blur="() => true" :disabled="disabled" :no-drop="true"
+              :clear-search-on-blur="clearSearchOnBlur" :disabled="disabled" :no-drop="true"
               :placeholder="placeholder" @search="selectSearch" ref="vSelect">
         <div slot="no-options">{{ placeholder }}</div>
     </v-select>
@@ -31,7 +31,8 @@ export default {
     },
     data() {
         return {
-            emails: []
+            emails: [],
+            search: ""
         }
     },
     components: {
@@ -57,12 +58,20 @@ export default {
         },
     },
     methods: {
+        clearSearchOnBlur() {
+            if (!this.emails.includes(this.search)) {
+                this.emails.push(this.search);
+                this.removeNonEmails()
+            }
+            return true;
+        },
         removeNonEmails() {
             this.emails = this.emails.filter(email => {
                 return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
             })
         },
         selectSearch(search) {
+            this.search = search;
             if (/[\s,;]+/.test(search)) {
                 const emails = search.split(/[\s,;]+/);
                 if (emails.length > 0) {
